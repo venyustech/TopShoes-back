@@ -1,10 +1,10 @@
 import { Router } from "express";
-import auth from "./auth.js";
-import transactions from "./transactions.js";
+import authRouter from "./authRouter.js";
+import { addIncome } from "./transactionsRouter.js";
 
 const router = Router();
 
-router.use(auth)
-router.use(transactions)
+router.use(authRouter);
+router.use(addIncome);
 
 export default router;

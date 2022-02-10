@@ -3,6 +3,6 @@ import bcrypt from "bcrypt";
 import { v4 as uuid } from "uuid";
 import db from "../db.js";
 
-export async function main(req, res) {
+export async function addIncome(req, res) {
 
 }
