@@ -5,9 +5,11 @@ import "dayjs/locale/pt-br.js";
 import router from "./routes/index.js";
 
 const server = express();
-// server.get('/teste', (req, res) => {
-//     res.send('OKAY');
-// })
+server.get('/health', (req, res) => {
+    res.send('OKAY');
+});
+
+
 server.use(json());
 server.use(cors());
 
