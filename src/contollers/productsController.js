@@ -16,7 +16,16 @@ export async function getProducts(req, res) {
         res.status(500).send(error);
     }
 }
-
+//retorna o produto por id
+export async function getProduct(req, res) {
+    try {
+        const user = await db.collection("products").findOne({ id: parseInt(req.params.index) })
+        res.send(user)
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).send(error.message);
+    }
+}
 
 
 export async function addProductsColletion(req, res) {

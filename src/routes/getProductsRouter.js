@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { getProducts } from "../contollers/getProductsController.js";
+import { getProduct, getProducts } from "../contollers/productsController.js"
 
+const productsRouter = Router();
+productsRouter.get("/api/products", getProducts)
+productRouter.get("/api/addProductColletionValues", addProductColletionValues);
+productRouter.get("/api/products/:index", getProduct)
 
-const getProductsRouter = Router();
-getProductsRouter.get("/api/products", getProducts)
-
-export default getProductsRouter
+export default productsRouter
