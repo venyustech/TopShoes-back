@@ -15,9 +15,8 @@ server.use(cors());
 
 server.use(router);
 
-// server.listen(process.env.PORT, () => {
-//     console.log("Server is listening on http://localhost:5000/");
+server.listen(process.env.PORT, () => {
+    console.log("Server is listening on http://localhost:5000/");
 
-// });
+});
 
-server.listen(5003, () => console.log("Server in http://localhost:5003/"))
