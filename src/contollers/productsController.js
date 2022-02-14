@@ -27,6 +27,35 @@ export async function getProduct(req, res) {
     }
 }
 
+export async function putProduct(req, res) {
+    try {
+        for (let element in req.body) {
+            console.log(req.body[element])
+            const product = await db.collection("products").findOne({ id: parseInt(req.body[element].id) })
+            if (!product) {
+                res.sendStatus(404)
+                return;
+            }
+            if (product.stock < req.body[element].stock) {
+                res.status(412).send(`Quantidade no stock ${product.stock}`);
+                return;
+            }
+
+            await db.collection("products").updateOne({
+                id: parseInt(req.body[element].id)
+            }, { $set: { "stock": product.stock - req.body[element].stock } })
+        };
+        res.send("ok")
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).send(error.message);
+    }
+}
+
+//    elementro tras a posiçao da array        0                      1
+// axios.put(`http://localhost:3000/`, [{ id: 0, stock: 10 }, { id: 1, stock: 5 }]),
+
+
 
 export async function addProductsColletion(req, res) {
     try {
